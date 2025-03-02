@@ -8,6 +8,12 @@ This program requires two environment variables: `PORT` and `SESSION_SECRET`. Ho
 
 # Command
 
+### Create secret key
+```cmd
+node -e "console.log(require('crypto').randomBytes(16).toString('hex'))"
+```
+
+### Create container
 ```cmd
 docker-compose up -d
 ```
