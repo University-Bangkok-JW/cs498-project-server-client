@@ -8,5 +8,36 @@ services:
     environment:
       - PORT=3000
       - SESSION_SECRET=
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=1234
+      - DB_NAME=mydb
+      - DB_PORT=5432
     restart: always
     working_dir: /usr/src/app
+    depends_on:
+      - db
+    networks:
+      - backend
+
+  db:
+    image: postgres:17
+    container_name: postgres_db
+    restart: always
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: 1234
+      DB_NAME: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:

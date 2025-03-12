@@ -1,19 +1,19 @@
-require("dotenv").config();
-
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const validator = require("validator");
 
-async function addUser(username, password, role, email) {
+async function addUser(username, email, role, password) {
   try {
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    if (!validator.isEmail(email)) {
+      throw new Error(`Invalid email format: ${email}`);
+    }
 
-    // Create user
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
       user_name: username,
-      user_password: hashedPassword,
+      user_email: email,
       user_role: role,
-      email: email,
+      user_password: hashedPassword
     });
 
     console.log("User created:", user.toJSON());
@@ -22,4 +22,4 @@ async function addUser(username, password, role, email) {
   }
 }
 
-module.exports = { addUser }
+module.exports = { addUser };
