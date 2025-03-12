@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "yourpassword",
+    "password": "1234",
     "database": "mydb",
-    "host": "localhost",
+    "host": "db",
     "dialect": "postgres"
   }
 }
