@@ -2,7 +2,8 @@ services:
   app:
     build: ./src
     command: >
-      sh -c "npm install && npm start"
+      sh -c "chmod +x ./wait-for-it.sh &&
+             ./wait-for-it.sh db:5432 -- sh -c 'npm install && npm start'"
     ports:
       - "3000:3000"
     environment:
@@ -17,6 +18,8 @@ services:
     working_dir: /usr/src/app
     depends_on:
       - db
+    volumes:
+      - ./wait-for-it.sh:/usr/src/app/wait-for-it.sh
     networks:
       - backend
 
