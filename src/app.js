@@ -44,6 +44,11 @@ app.use("/", require("./routes/home"));
 app.use("/learning", require("./routes/learning"));
 app.use("/login", require("./routes/auth"));
 
+// Catch-all route to handle undefined routes
+app.use((req, res) => {
+  res.redirect("/");
+});
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
