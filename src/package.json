@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kittiphopklam27/ProjectBu.git"
+    "url": "git+https://github.com/University-Bangkok-JW/cs498-project-express.git"
   },
   "issue": {
     "bugs": {
-      "url": "https://github.com/kittiphopklam27/ProjectBu/issues",
+      "url": "https://github.com/University-Bangkok-JW/cs498-project-express/issues",
       "email": "jetsadawijit@outlook.com"
     }
   },
