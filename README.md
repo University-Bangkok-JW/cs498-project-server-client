@@ -17,3 +17,8 @@ node -e "console.log(require('crypto').randomBytes(16).toString('hex'))"
 ```cmd
 docker-compose up -d
 ```
+
+### Re-Build All
+```cmd
+docker compose down --rmi all --volumes --remove-orphans && docker compose build --no-cache && docker compose up -d
+```
