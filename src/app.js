@@ -43,6 +43,7 @@ app.use(
 app.use("/", require("./routes/home"));
 app.use("/learning", require("./routes/learning"));
 app.use("/login", require("./routes/auth"));
+app.use("/logout", require("./routes/logout"));
 
 // Catch-all route to handle undefined routes
 app.use((req, res) => {
