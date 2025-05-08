@@ -1,5 +1,9 @@
 const sequelize = require("../db/database");
 
+/**
+ * Ensures the database connection is valid and tables are synchronized.
+ * WARNING: force: true will drop and recreate all tables.
+ */
 async function ensureDatabaseExists() {
   try {
     await sequelize.authenticate();

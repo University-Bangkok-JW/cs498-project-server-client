@@ -1,8 +1,12 @@
+// Load environment variables from .env file (disabled in production)
 // require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const path = require("path");
+
+// Utility functions for database and user setup
 const { ensureDatabaseExists } = require("./utils/fileHandler");
 const { addUser } = require("./utils/userHandler");
 
@@ -14,7 +18,8 @@ ensureDatabaseExists().then(() => {
   console.log("Adding default users...");
   console.log("Admin email:", "admin@example.com");
   console.log("User email:", "user@example.com");
-  
+
+  // Add default admin and user accounts
   return Promise.all([
     addUser("jetsada", "admin@example.com", "admin", "1234"),
     addUser("owen", "user@example.com", "user", "1234")
@@ -25,15 +30,15 @@ ensureDatabaseExists().then(() => {
   console.error("Database setup error:", err);
 });
 
+// Middleware setup
+app.set("view engine", "ejs"); // Set EJS as the templating engine
+app.use(bodyParser.urlencoded({ extended: true })); // Parse form submissions
+app.use(express.static(path.join(__dirname, "public"))); // Serve static files
 
-// Middleware
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
-
+// Session configuration
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "secret",
+    secret: process.env.SESSION_SECRET || "secret", // Session secret
     resave: false,
     saveUninitialized: false,
   })
@@ -50,6 +55,7 @@ app.use((req, res) => {
   res.redirect("/");
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

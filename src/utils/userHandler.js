@@ -2,6 +2,15 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const validator = require("validator");
 
+/**
+ * Adds a new user to the database with a hashed password.
+ * Validates email format before creation.
+ *
+ * @param {string} username - The username of the user
+ * @param {string} email - The user's email address
+ * @param {string} role - The user's role (e.g., 'admin', 'user')
+ * @param {string} password - The plaintext password to be hashed
+ */
 async function addUser(username, email, role, password) {
   try {
     if (!validator.isEmail(email)) {
