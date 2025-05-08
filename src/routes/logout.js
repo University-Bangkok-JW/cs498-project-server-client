@@ -7,6 +7,8 @@ router.get("/", (req, res) => {
       console.error("Logout Error:", err);
       return res.send("Logout failed!");
     }
+  
+    res.set("Cache-Control", "no-store");
     res.redirect("/login");
   });
 });

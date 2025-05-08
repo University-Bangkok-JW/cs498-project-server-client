@@ -1,16 +1,16 @@
 const express = require("express");
-
-const User = require("../models/User");
-
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  if (!req.session.userId) {
+router.get("/", (req, res) => {
+  if (!req.session.userId || !req.session.user) {
     return res.redirect("/login");
   }
 
-  const user = await User.findByPk(req.session.userId);
-  if (!user) return res.redirect("/login");
+  // Use cached user data
+  const user = req.session.user;
+
+  // Cache for 30 days (2592000 seconds)
+  res.set("Cache-Control", "private, max-age=2592000");
 
   res.render("home", {
     userId: user.user_id,

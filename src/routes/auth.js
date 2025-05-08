@@ -4,15 +4,17 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-// Login Route
+// Login Page - prevent caching to avoid back button showing login after auth
 router.get("/", (req, res) => {
   if (req.session.userId) {
     return res.redirect("/");
   }
 
+  res.set("Cache-Control", "no-store"); // Disable caching for login page
   res.render("login");
 });
 
+// Handle login POST
 router.post("/", async (req, res) => {
   const { user_name, password } = req.body;
   const normalizedUsername = user_name.toLowerCase();
@@ -23,7 +25,11 @@ router.post("/", async (req, res) => {
   }
 
   req.session.userId = user.user_id;
-  // console.log("Session after login:", req.session); // Debugging
+  req.session.user = {
+    user_id: user.user_id,
+    user_name: user.user_name,
+    user_role: user.user_role
+  };
   res.redirect("/");
 });
 
