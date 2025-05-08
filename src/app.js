@@ -16,8 +16,8 @@ ensureDatabaseExists().then(() => {
   console.log("User email:", "user@example.com");
   
   return Promise.all([
-    addUser("admin", "admin@example.com", "admin", "1234"),
-    addUser("user", "user@example.com", "user", "1234")
+    addUser("jetsada", "admin@example.com", "admin", "1234"),
+    addUser("owen", "user@example.com", "user", "1234")
   ]);
 }).then(() => {
   console.log("Default users added.");

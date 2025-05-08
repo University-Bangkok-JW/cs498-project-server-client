@@ -15,7 +15,8 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   const { user_name, password } = req.body;
-  const user = await User.findOne({ where: { user_name } });
+  const normalizedUsername = user_name.toLowerCase();
+  const user = await User.findOne({ where: { user_name: normalizedUsername } });
 
   if (!user || !(await bcrypt.compare(password, user.user_password))) {
     return res.send("Invalid username or password!");

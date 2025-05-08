@@ -10,7 +10,13 @@ router.get("/", async (req, res) => {
   }
 
   const user = await User.findByPk(req.session.userId);
-  res.render("home", { username: user.username });
+  if (!user) return res.redirect("/login");
+
+  res.render("home", {
+    userId: user.user_id,
+    username: user.user_name,
+    role: user.user_role
+  });
 });
 
 module.exports = router;
