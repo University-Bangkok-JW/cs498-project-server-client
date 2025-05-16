@@ -1,5 +1,11 @@
 const sequelize = require("../db/database");
 
+// Import all models to register them with Sequelize
+require("../models/User");
+require("../models/Ai");
+require("../models/FeedBack");
+require("../models/Product");
+
 /**
  * Ensures the database connection is valid and tables are synchronized.
  * WARNING: force: true will drop and recreate all tables.
