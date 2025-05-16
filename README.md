@@ -43,3 +43,8 @@ docker compose down --rmi all --volumes --remove-orphans && docker compose build
 5. Run the container using one of the following methods:
    - [`Normal`](#create-container)
    - [`Advanced (Delete all and re-build everything)`](#re-build-all)
+
+6. Cmd to check db tables if exist
+```cmd
+docker exec -it postgres_db psql -U postgres -d mydb -c "\dt"
+```
