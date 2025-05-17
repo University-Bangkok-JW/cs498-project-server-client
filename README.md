@@ -48,3 +48,9 @@ docker compose down --rmi all --volumes --remove-orphans && docker compose build
 ```cmd
 docker exec -it postgres_db psql -U postgres -d mydb -c "\dt"
 ```
+
+# Reference
+
+[`Test1`](https://github.com/University-Bangkok-JW/cs498-project-test-3d)
+[`Test2`](https://github.com/University-Bangkok-JW/cs498-project-test-3d-2)
+[`Test3`](https://github.com/University-Bangkok-JW/cs498-project-test-3d-3)
