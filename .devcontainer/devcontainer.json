@@ -19,10 +19,5 @@
         "christian-kohler.path-intellisense"
       ]
     }
-  },
-  "mounts": [
-    "source=${localWorkspaceFolder}/src,target=/workspace/src,type=bind"
-  ],
-  "remoteUser": "node",
-  "workspaceFolder": "/workspace"
+  }
 }
