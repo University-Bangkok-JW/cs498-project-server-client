@@ -1,6 +1,6 @@
 {
   "name": "Npm Dev Environment",
-  "image": "node:18",  // Or whichever version of Node you prefer
+  "image": "node:18",
   "features": {
     "ghcr.io/devcontainers-contrib/features/jshint:2": {}
   },
