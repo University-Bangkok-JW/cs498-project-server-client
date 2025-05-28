@@ -1,10 +1,9 @@
 {
   "name": "Npm Dev Environment",
-  "image": "node:18",
   "features": {
     "ghcr.io/devcontainers-contrib/features/jshint:2": {}
   },
-  "postCreateCommand": "cd src && npm install",
+  "postCreateCommand": "git config --global user.name \"$GIT_USER_NAME\" && git config --global user.email \"$GIT_USER_EMAIL\" && cd server/src && npm install",
   "customizations": {
     "vscode": {
       "settings": {
@@ -19,5 +18,10 @@
         "christian-kohler.path-intellisense"
       ]
     }
+  },
+  "remoteEnv": {
+    "GIT_USER_NAME": "${localEnv:GIT_USER_NAME}",
+    "GIT_USER_EMAIL": "${localEnv:GIT_USER_EMAIL}",
+    "GIT_USER_TOKEN": "${localEnv:GIT_USER_TOKEN}"
   }
 }
