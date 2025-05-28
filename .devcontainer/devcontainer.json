@@ -1,5 +1,8 @@
 {
   "name": "Npm Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
     "ghcr.io/devcontainers-contrib/features/jshint:2": {}
   },
