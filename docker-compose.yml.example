@@ -19,6 +19,7 @@ services:
     depends_on:
       - db
     volumes:
+      - ./server:/usr/src/server
       - ./wait-for-it.sh:/usr/src/server/wait-for-it.sh
     networks:
       - backend
@@ -31,7 +32,7 @@ services:
     restart: always
     working_dir: /usr/src/client
     volumes:
-      - ./client/src:/usr/src/client
+      - ./client:/usr/src/client
     depends_on:
       - server
     networks:
