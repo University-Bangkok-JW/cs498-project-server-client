@@ -2,7 +2,7 @@
 FROM node:18
 
 # Create app directory
-WORKDIR /usr/src/server
+WORKDIR /usr/src/client
 
 # Copy package.json and package-lock.json
 COPY package*.json ./

@@ -15,11 +15,25 @@ services:
       - DB_NAME=mydb
       - DB_PORT=5432
     restart: always
-    working_dir: /usr/src/app
+    working_dir: /usr/src/server
     depends_on:
       - db
     volumes:
-      - ./wait-for-it.sh:/usr/src/app/wait-for-it.sh
+      - ./wait-for-it.sh:/usr/src/server/wait-for-it.sh
+    networks:
+      - backend
+  
+  client:
+    build: ./client/src
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "5173:3000"  # Avoid port clash with server
+    restart: always
+    working_dir: /usr/src/client
+    volumes:
+      - ./client/src:/usr/src/client
+    depends_on:
+      - server
     networks:
       - backend
 
