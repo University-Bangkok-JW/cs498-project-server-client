@@ -1,6 +1,6 @@
 services:
   app:
-    build: ./src
+    build: ./server/src
     command: >
       sh -c "chmod +x ./wait-for-it.sh &&
              ./wait-for-it.sh db:5432 -- sh -c 'npm install && npm start'"
