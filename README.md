@@ -26,6 +26,13 @@ docker-compose up -d
 docker compose down --rmi all --volumes --remove-orphans && docker compose build --no-cache && docker compose up -d
 ```
 
+PowerShell
+```cmd
+docker compose down --rmi all --volumes --remove-orphans
+docker compose build --no-cache
+docker compose up -d
+```
+
 # Step-by-Step Guide
 
 1. Rename `docker-compose.yml.example` to `docker-compose.yml`.
